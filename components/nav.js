@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Search from "./search";
 
 const Nav = ({ categories }) => {
   return (
@@ -13,6 +14,9 @@ const Nav = ({ categories }) => {
               </Link>
             </li>
           </ul>
+        </div>
+        <div className="uk-navbar-center">
+          <Search />
         </div>
         <div className="uk-navbar-right">
           <ul className="uk-navbar-nav">
