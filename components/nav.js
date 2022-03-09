@@ -1,8 +1,20 @@
 import React from "react";
 import Link from "next/link";
-import Search from "./search";
+import { useRouter } from 'next/router'
+
+import { getAlgoliaResults } from '@algolia/autocomplete-js';
+import algoliasearch from 'algoliasearch';
+import { Autocomplete } from './autocomplete';
+import ArticleItem from './articleItem';
+import "@algolia/autocomplete-theme-classic";
+
+const searchClient = algoliasearch(
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY,
+);
 
 const Nav = ({ categories }) => {
+  const router = useRouter()
   return (
     <div>
       <nav className="uk-navbar-container" data-uk-navbar>
@@ -16,7 +28,32 @@ const Nav = ({ categories }) => {
           </ul>
         </div>
         <div className="uk-navbar-center">
-          <Search />
+          <Autocomplete 
+            openOnFocus={false}
+            placeholder="Search for articles"
+            getItemUrl={({ item }) => { router.push(`/article/${item.slug}`)}}
+            getSources={({ query }) => [
+              {
+                sourceId: "articles",
+                getItems() {
+                  return getAlgoliaResults({
+                    searchClient,
+                    queries: [
+                      {
+                        indexName: "development_api::article.article",
+                        query,
+                      }
+                    ]
+                  })
+                },
+                templates: {
+                  item({ item, components}) {
+                    return <ArticleItem hit={item} components={components} />;
+                  }
+                }
+              },
+            ]}
+          />
         </div>
         <div className="uk-navbar-right">
           <ul className="uk-navbar-nav">
