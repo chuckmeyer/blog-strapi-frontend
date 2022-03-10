@@ -5,7 +5,7 @@ function ArticleItem({ hit, components }) {
     <a className="aa-ItemLink" href={`/article/${hit.slug}`}>
       <div className="aa-ItemContent">
         <div className="ItemCategory">{hit.category.name}</div>
-        <div classname="aa-ItemContentBody">
+        <div className="aa-ItemContentBody">
           <div className="aa-ItemContentTitle">
             <components.Highlight hit={hit} attribute="title" />
           </div>
