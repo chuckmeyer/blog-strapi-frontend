@@ -40,7 +40,7 @@ const Nav = ({ categories }) => {
                     searchClient,
                     queries: [
                       {
-                        indexName: "development_api::article.article",
+                        indexName: "production_api::article.article",
                         query,
                       }
                     ]
