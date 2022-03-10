@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { useRouter } from 'next/router'
 
 import { getAlgoliaResults } from '@algolia/autocomplete-js';
 import algoliasearch from 'algoliasearch';
@@ -14,7 +13,6 @@ const searchClient = algoliasearch(
 );
 
 const Nav = ({ categories }) => {
-  const router = useRouter()
   return (
     <div>
       <nav className="uk-navbar-container" data-uk-navbar>
@@ -31,7 +29,7 @@ const Nav = ({ categories }) => {
           <Autocomplete 
             openOnFocus={false}
             placeholder="Search for articles"
-            getItemUrl={({ item }) => { router.push(`/article/${item.slug}`)}}
+            getItemUrl={({ item }) => { return `/article/${item.slug}`}}
             getSources={({ query }) => [
               {
                 sourceId: "articles",
