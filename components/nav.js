@@ -28,6 +28,7 @@ const Nav = ({ categories }) => {
         <div className="uk-navbar-center">
           <Autocomplete 
             openOnFocus={false}
+            detachedMediaQuery=''
             placeholder="Search for articles"
             getItemUrl={({ item }) => { return `/article/${item.slug}`}}
             getSources={({ query }) => [
