@@ -30,10 +30,10 @@ const Nav = ({ categories }) => {
             openOnFocus={false}
             detachedMediaQuery=''
             placeholder="Search for articles"
-            getItemUrl={({ item }) => { return `/article/${item.slug}`}}
             getSources={({ query }) => [
               {
                 sourceId: "articles",
+                getItemUrl( {item} ) { return `/article/${item.slug}`},
                 getItems() {
                   return getAlgoliaResults({
                     searchClient,
