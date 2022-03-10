@@ -39,3 +39,10 @@ img:hover {
   opacity: 1;
   transition: opacity 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
+
+.ItemCategory {
+  font-family: Staatliches;
+  font-size: 20px;
+  font-size: 1.125rem;
+  line-height: 1.2;
+}
