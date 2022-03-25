@@ -3,10 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: "default",
-    domains: [
-      "res.cloudinary.com"
-    ],
-  }
-};
+    domains: ["localhost"],
+  },
+}
 
 module.exports = nextConfig
